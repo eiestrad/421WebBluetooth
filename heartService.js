@@ -1,6 +1,6 @@
 async function heartDevices() {
     navigator.bluetooth.requestDevice({
-        optionalServices: [0x180A, 0x180F], acceptAllDevices: true
+        optionalServices: [], acceptAllDevices: true
     })
         .then(device => {
             console.log(`Connected to '${device.name}'`);
