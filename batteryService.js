@@ -5,7 +5,7 @@ let newValue = 1;
 async function batteryDevices() {
 	navigator.bluetooth
 		.requestDevice({
-			optionalServices: [0x180A, 0x180F, 0xFE2C, 0xFE03], acceptAllDevices: true
+			optionalServices: [0x180A, 0x180F], acceptAllDevices: true
 		})
 		.then((device) => {
 			console.log(device.name);
