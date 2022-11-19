@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script defer src="batteryService.js"></script>
+		<script defer src="heartService.js"></script>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="container">
+			<h1 id="header">Web Bluetooth</h1>
+            <div id="batteryLevel">&#x1F5F2 0%</div><br />
+            <canvas id="battery"></canvas>
+			<button id="b1" onClick="batteryDevices()">Search 'Battery_Service' Devices</button>
+			<button id="b2" onClick="heartDevices()">Search 'Heart Rate' Devices [WIP]</button>
+		</div>
+	</body>
+</html>
+
+<style>
+	#container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+		background-color: gray;
+	}
+    #batteryLevel {
+        position: absolute;
+        bottom: 50%;
+        right: 0;
+        left: 0;
+        color: yellow;
+        font-size: 38px;
+        cursor: default;
+        text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    }
+    #header {
+        font-size: 38px;
+        color: yellow;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+	html {
+		text-align: center;
+	}
+	#b1 {
+        position: absolute;
+        bottom: 75%;
+        left: 15%;
+		/* margin-right: 20px; */
+	}
+	#b2 {
+        position: absolute;
+        bottom: 75%;
+        right: 15%;
+		margin-left: 20px;
+	}
+</style>
