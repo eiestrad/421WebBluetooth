@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<script defer src="batteryService.js"></script>
+		<script defer src="inputService.js"></script>
 		<script defer src="heartService.js"></script>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,10 +12,10 @@
 		<div id="container">
 			<h1 id="header">Web Bluetooth</h1>
             <div  id="readyState"></div>
-            <div id="batteryLevel"></div><br />
+            <div id="inputValue"></div><br />
             <div id="heartRate"></div><br />
-            <canvas id="battery"></canvas>
-			<button id="b1" onClick="batteryDevices()">Search 'Input' Devices</button>
+            <canvas id="input"></canvas>
+			<button id="b1" onClick="inputDevices()">Search 'Input' Devices</button>
 			<button id="b2" onClick="heartDevices()">Search 'Heart Rate' Devices [WIP]</button>
 		</div>
 	</body>
@@ -35,7 +35,7 @@
         font-size: 24px;
         cursor: default;
     }
-    #batteryLevel {
+    #inputValue {
         position: absolute;
         bottom: 50%;
         right: 0;
@@ -56,7 +56,7 @@
 	#b1 {
         position: absolute;
         bottom: 75%;
-        left: 15%;
+        left: 46%;
 		/* margin-right: 20px; */
 	}
 	#b2 {

@@ -1,9 +1,9 @@
-let batteryLevel = document.querySelector("#batteryLevel");
+let inputValue = document.querySelector("#inputValue");
 let readyState = document.querySelector("#readyState");
 let currentValue = 0;
 let newValue = 1;
 
-async function batteryDevices() {
+async function inputDevices() {
 	navigator.bluetooth
 		.requestDevice({
 			optionalServices: [0x180A, 0x180F, 0x9800], acceptAllDevices: true
@@ -33,13 +33,13 @@ async function batteryDevices() {
 
 function characteristicValueChanged(event) {
 	const value = event.target.value;
-	parseBatteryData(value);
+	parseInputData(value);
 }
 
-async function parseBatteryData(value) {
+async function parseInputData(value) {
 	value = value.buffer ? value : new DataView(value);
 	this.newValue = Number.parseInt(value.getUint8(0));
-	console.log(`> Battery Level: ${value.getUint8(0)}`);
+	console.log(`> Input: ${value.getUint8(0)}`);
 	readyState.innerHTML = "Ready";
-	batteryLevel.innerHTML = `${value.getUint8(0)}`;
+	inputValue.innerHTML = `${value.getUint8(0)}`;
 }
