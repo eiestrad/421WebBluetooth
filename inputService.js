@@ -13,9 +13,11 @@ async function inputDevices() {
 			return device.gatt.connect();
 		})
 		.then((server) => {
+			//console.log(server.getPrimaryService(0x9800));
 			return server.getPrimaryService(0x9800);
 		})
 		.then((service) => {
+			//console.log(service.getCharacteristic(0x9801));
 			return service.getCharacteristic(0x9801);
 		})
 		.then((characteristic) => {
