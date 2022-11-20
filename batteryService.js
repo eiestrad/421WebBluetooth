@@ -41,6 +41,5 @@ async function parseBatteryData(value) {
 	this.newValue = Number.parseInt(value.getUint8(0));
 	console.log(`> Battery Level: ${value.getUint8(0)}`);
 	readyState.innerHTML = "Ready";
-	batteryLevel.innerHTML = `&#x1F5F2 ${value.getUint8(0)}%`;
 	batteryLevel.innerHTML = `${value.getUint8(0)}`;
 }
