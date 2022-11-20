@@ -24,7 +24,7 @@ async function heartDevices() {
         .then((characteristic) => {
             characteristic.startNotifications();
             characteristic.addEventListener(
-                "characteristicvaluechangedH",
+                "characteristicvaluechanged",
                 characteristicValueChangedH
             );
             return characteristic.readValue();
