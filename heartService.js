@@ -1,30 +1,59 @@
+let currentVal = 0;
+let newVal = 1;
+
 async function heartDevices() {
     navigator.bluetooth.requestDevice({
-        filters: [{
-            services: ['heart_rate'],
-        }]
+        optionalServices: [0x180E, 0x180D], acceptAllDevices: true
     })
-    .then(device => {
-        console.log(`Connected to '${device.name}'`);
-        return device.gatt.connect();})
-    .then(server => {
-        return server.getPrimaryService('heart_rate');
-    })
-    .then(service => {
-        return service.getCharacteristic('heart_rate_measurement');
-    })
-    .then(characteristic => {
-        return characteristic.readValue();
-    })    
-    .catch(error => { console.error(error);});
+        .then(device => {
+            console.log(`Connected to '${device.name}'`);
+            return device.gatt.connect();
+        })
+        .then(server => {
+            /*
+            console.log(server.getPrimaryService(0x180E));
+            return server.getPrimaryService(0x180E);
+            /*
+            return server.getPrimaryService(0x180D);
+            */
+            return server.getPrimaryService('heart_rate');
+        })
+        .then(service => {
+            /*
+            console.log(service.getCharacteristic(0x2A3F));
+            return service.getCharacteristic(0x2A3F);
+            /*
+            return service.getCharacteristic(0x2A37);
+            */
+            return service.getCharacteristic('heart_rate_measurement');
+        })
+        .then((characteristic) => {
+            /*
+            characteristic.startNotifications();
+            characteristic.addEventListener(
+                "characteristicvaluechanged",
+                characteristicValueChangedH
+            );
+            */
+            return characteristic.readValue();
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}
+/*
+function characteristicValueChangedH(event) {
+    const value = event.target.value;
+    parseHeartData(value);
 }
 
-// function characteristicValueChanged(event) {
-//     const value = event.target.value;
-//     parseHeartRate(value);
-// }
-
-function parseHeartRate(value) {
+async function parseHeartData(value) {
+    let temp = value;
     value = value.buffer ? value : new DataView(value);
-    console.log(`> Battery Level is ${value.getUint8(0)}%`);
-}
+    //this.newVal = Number.parseInt(value.getUint8(0));
+    //console.log(`> Battery Level: ${value.getUint8(0)}`);
+    readyState.innerHTML = "Ready";
+    //heartRate.innerHTML = `${value.getUint8(0)}`;
+    console.log(value);
+    console.log(value.getUint8(0));
+}*/
