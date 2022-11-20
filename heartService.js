@@ -1,3 +1,6 @@
+let currentVal = 0;
+let newVal = 1;
+
 async function heartDevices() {
     navigator.bluetooth.requestDevice({
         optionalServices: [0x180E, 0x180D], acceptAllDevices: true
@@ -18,15 +21,29 @@ async function heartDevices() {
             return service.getCharacteristic(0x2A37);
             return service.getCharacteristic('heart_rate_measurement');*/
         })
-        .then(characteristic => {
+        .then((characteristic) => {
             characteristic.startNotifications();
+            characteristic.addEventListener(
+                "characteristicvaluechanged",
+                characteristicValueChangedH
+            );
             return characteristic.readValue();
         })
-        .catch(error => { console.error(error); });
+        .catch((error) => {
+            console.error(error);
+        });
 }
 
-function parseHeartRate(value) {
+function characteristicValueChangedH(event) {
+    const value = event.target.value;
+    parseHeartData(value);
+}
+
+async function parseHeartData(value) {
     value = value.buffer ? value : new DataView(value);
-    console.log(`> Battery Level is ${value.getUint8(0)}%`);
-    heartRate.innerHTML = `${value.getUint8(0)}`;
+    //this.newVal = Number.parseInt(value.getUint8(0));
+    //console.log(`> Battery Level: ${value.getUint8(0)}`);
+    readyState.innerHTML = "Ready";
+    //heartRate.innerHTML = `${value.getUint8(0)}`;
+    heartRate.innerHTML = value;
 }
