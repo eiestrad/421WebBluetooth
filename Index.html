@@ -11,7 +11,8 @@
 	<body>
 		<div id="container">
 			<h1 id="header">Web Bluetooth</h1>
-            <div id="batteryLevel">&#x1F5F2 0%</div><br />
+            <div  id="readyState"></div>
+            <div id="batteryLevel"></div><br />
             <canvas id="battery"></canvas>
 			<button id="b1" onClick="batteryDevices()">Search 'Input' Devices</button>
 			<button id="b2" onClick="heartDevices()">Search 'Heart Rate' Devices [WIP]</button>
@@ -28,6 +29,11 @@
         bottom: 0;
 		background-color: gray;
 	}
+    #readyState {
+        color: yellow;
+        font-size: 24px;
+        cursor: default;
+    }
     #batteryLevel {
         position: absolute;
         bottom: 50%;

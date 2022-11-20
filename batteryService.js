@@ -1,4 +1,5 @@
 let batteryLevel = document.querySelector("#batteryLevel");
+let readyState = document.querySelector("#readyState");
 let currentValue = 0;
 let newValue = 1;
 
@@ -44,6 +45,7 @@ async function parseBatteryData(value) {
 	value = value.buffer ? value : new DataView(value);
 	this.newValue = Number.parseInt(value.getUint8(0));
 	console.log(`> Battery Level: ${value.getUint8(0)}`);
+	readyState.innerHTML = "Ready";
 	batteryLevel.innerHTML = `&#x1F5F2 ${value.getUint8(0)}%`;
 	batteryLevel.innerHTML = `${value.getUint8(0)}`;
 	// while (currentValue != newValue) {
