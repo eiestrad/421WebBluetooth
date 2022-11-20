@@ -1,15 +1,19 @@
 async function heartDevices() {
     navigator.bluetooth.requestDevice({
-        optionalServices: [], acceptAllDevices: true
+        optionalServices: [0x1805, 0x180D], acceptAllDevices: true
     })
         .then(device => {
             console.log(`Connected to '${device.name}'`);
             return device.gatt.connect();
         })
         .then(server => {
+            return server.getPrimaryService(0x1805);
+            return server.getPrimaryService(0x180D);
             return server.getPrimaryService('heart_rate');
         })
         .then(service => {
+            return service.getCharacteristic(0x2A2B);
+            return service.getCharacteristic(0x2A37);
             return service.getCharacteristic('heart_rate_measurement');
         })
         .then(characteristic => {

@@ -13,14 +13,9 @@ async function batteryDevices() {
 			return device.gatt.connect();
 		})
 		.then((server) => {
-			/*console.log(server.getPrimaryService(0x9800));
-			console.log(server.getPrimaryService(0x180F));*/
-			//return server.getPrimaryService("battery_service");
 			return server.getPrimaryService(0x9800);
 		})
 		.then((service) => {
-			/*console.log(service.getCharacteristic(0x9801));*/
-			//return service.getCharacteristic("battery_level");
 			return service.getCharacteristic(0x9801);
 		})
 		.then((characteristic) => {
