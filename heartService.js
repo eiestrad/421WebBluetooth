@@ -10,30 +10,38 @@ async function heartDevices() {
             return device.gatt.connect();
         })
         .then(server => {
+            /*
             console.log(server.getPrimaryService(0x180E));
-            return server.getPrimaryService(0x180E);/*
+            return server.getPrimaryService(0x180E);
+            /*
             return server.getPrimaryService(0x180D);
-            return server.getPrimaryService('heart_rate');*/
+            */
+            return server.getPrimaryService('heart_rate');
         })
         .then(service => {
+            /*
             console.log(service.getCharacteristic(0x2A3F));
-            return service.getCharacteristic(0x2A3F);/*
+            return service.getCharacteristic(0x2A3F);
+            /*
             return service.getCharacteristic(0x2A37);
-            return service.getCharacteristic('heart_rate_measurement');*/
+            */
+            return service.getCharacteristic('heart_rate_measurement');
         })
         .then((characteristic) => {
+            /*
             characteristic.startNotifications();
             characteristic.addEventListener(
                 "characteristicvaluechanged",
                 characteristicValueChangedH
             );
+            */
             return characteristic.readValue();
         })
         .catch((error) => {
             console.error(error);
         });
 }
-
+/*
 function characteristicValueChangedH(event) {
     const value = event.target.value;
     parseHeartData(value);
@@ -48,4 +56,4 @@ async function parseHeartData(value) {
     //heartRate.innerHTML = `${value.getUint8(0)}`;
     console.log(value);
     console.log(value.getUint8(0));
-}
+}*/
