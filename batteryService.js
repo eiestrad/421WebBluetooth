@@ -43,20 +43,4 @@ async function parseBatteryData(value) {
 	readyState.innerHTML = "Ready";
 	batteryLevel.innerHTML = `&#x1F5F2 ${value.getUint8(0)}%`;
 	batteryLevel.innerHTML = `${value.getUint8(0)}`;
-	// while (currentValue != newValue) {
-	// 	await setTimeout(tickPercentage, 1000);
-	// }
 }
-
-// function tickPercentage() {
-//     console.log("tick");
-// 	if (currentValue > newValue) {
-// 		currentValue--;
-// 		batteryLevel.innerHTML = `&#x1F5F2 ${currentValue}%`;
-// 	} else {
-// 		currentValue++;
-// 		batteryLevel.innerHTML = `&#x1F5F2 ${currentValue}%`;
-// 	}
-
-//     return ;
-// }
