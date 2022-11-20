@@ -40,10 +40,12 @@ function characteristicValueChangedH(event) {
 }
 
 async function parseHeartData(value) {
+    let temp = value;
     value = value.buffer ? value : new DataView(value);
     //this.newVal = Number.parseInt(value.getUint8(0));
     //console.log(`> Battery Level: ${value.getUint8(0)}`);
     readyState.innerHTML = "Ready";
     //heartRate.innerHTML = `${value.getUint8(0)}`;
-    heartRate.innerHTML = value;
+    console.log(value);
+    console.log(value.getUint8(0));
 }
